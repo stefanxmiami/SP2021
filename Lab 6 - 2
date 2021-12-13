@@ -1,0 +1,45 @@
+Да се напише програма која за даден број К ќе дешифрира која буква во латинската азбука се појавува после К букви од почетната буква C. 
+К може да биде поголемо од бројот на букви во азбуката, при што броењето ќе продолжи од почеток (циклично). 
+Се земаат во предвид само големи букви. На влез се читаат C и К, а на излез се печати дешифрираната буква. 
+Задачата да се реши користејќи низа за големите букви од латинската азбука и при дешифрирање да се користат стандардните операции за низи.
+
+#include <stdio.h>
+
+int main() {
+    char alphabet[2][13] = {{'A','B','C','D','E','F','G','H','I','J','K','L','M'},
+                             'N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+
+    int k, temp, rows, columns, startingPositionRowNum, startingPositionColumnNum, numberOfTimes = 0;
+    char c;
+    scanf("%c %d", &c , &k);
+    for (int i = 0; i < 2 ; i++) {
+        for (int j = 0; j < 13; j++) {
+            if(alphabet[i][j] == c){
+                //printf("Starting Letter is on Coordinates: [%d,%d]\n", i, j);
+                startingPositionColumnNum = i+1;
+                startingPositionRowNum = j;
+                break;
+            }
+        }
+    }
+
+
+
+    while (k+startingPositionRowNum > 13){
+        numberOfTimes++;
+        k -= 13;
+        //printf("THIS EXECUTED");
+    }
+
+
+    //printf("NumberOfTimes: %d\n", numberOfTimes);
+   // printf("spcn: %d\n", startingPositionColumnNum);
+
+    if((numberOfTimes+startingPositionColumnNum)%2 == 0){
+        printf("%c", alphabet[1][startingPositionRowNum+k]);
+    } else {
+        printf("%c", alphabet[0][startingPositionRowNum+k]);
+    }
+
+    return 0;
+}

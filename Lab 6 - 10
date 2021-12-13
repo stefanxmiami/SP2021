@@ -1,0 +1,38 @@
+За дадена низа со големина N, прочитајте ги сите елементи од дадениот влез, а потоа сортирајте ја низата. Испечатете ја во растечки редослед.
+
+Пример:
+
+Влез:
+
+5
+
+4 3 2 5 1
+
+Излез:
+
+1 2 3 4 5
+
+#include <stdio.h>
+
+int main() {
+    
+    int n, temp;
+    scanf("%d", &n);
+    int array[n];
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &array[i]);
+    }
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; ++j) {
+            if(array[i] > array[j]){
+                temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+        }
+    }
+    for (int i = n-1; i >= 0; i--) {
+        printf("%d ", array[i]);
+    }
+    return 0;
+}

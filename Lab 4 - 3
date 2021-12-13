@@ -1,0 +1,28 @@
+Да се напише програма во која во даден опсег на природни броеви [a,b], 
+ќе се најдат и отпечатат сите броеви чијшто збир на цифри кои се деливи со 2 е поголем од 0 и е делив со 4. На крај да се отпечати и бројот на вакви броеви.
+#include <stdio.h>
+
+int main() {
+    int a, b, temp, digitsSum = 0, vkupno = 0;
+    scanf("%d %d",&a,&b);
+    while(a<=b){
+        temp = a;
+        while (a){
+            if((a%10)%2 == 0) {
+                digitsSum += a % 10;
+            }
+            a/=10;
+        }
+        a = temp;
+
+        if(digitsSum > 0 && digitsSum % 4 == 0){
+                printf("%d\n", a);
+                vkupno++;
+        }
+
+        digitsSum = 0;
+        a++;
+    }
+    printf("Vkupno: %d", vkupno);
+    return 0;
+}

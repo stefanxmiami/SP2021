@@ -1,0 +1,64 @@
+За дадена квадратна матрица со големина N, најдете ја разликата помеѓу главната и споредната дијагонала, а потоа разликата помеѓу првата колона и последната колона на матрицата.
+
+Пример:
+
+Влез: 3
+
+1 2 3
+
+1 1 1
+
+2 2 2
+
+Излез:
+
+-2
+
+-2
+
+#include <stdio.h>
+
+int main() {
+    int n, diagonal1=0, diagonal2=0, column1=0, column2=0;
+    scanf("%d", &n);
+    int a[n][n];
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &a[i][j]);
+        }
+    }
+
+    for (int i = 0, j = 0; i < n; i++, j++) {
+        diagonal1 += a[i][j];
+    }
+
+    for (int i = 0, j = n-1; i < n; i++, j--) {
+        diagonal2 += a[i][j];
+    }
+
+    for (int i = 0; i < n; i++) {
+        column1 += a[i][0];
+    }
+
+    for (int i = 0; i < n; i++) {
+        column2 += a[i][n-1];
+    }
+
+
+    //printf("diagonal1 : %d\n", diagonal1);
+    //printf("diagonal2 : %d\n", diagonal2);
+    //printf("column1 : %d\n", column1);
+    //printf("column2 : %d\n", column2);
+
+    /*for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%d ", a[i][j]);
+        }
+        printf("\n");
+    }*/
+
+    printf("%d\n%d", diagonal1-diagonal2, column1-column2);
+
+    return 0;
+}

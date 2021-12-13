@@ -1,0 +1,27 @@
+Од стандарден влез се чита еден природен број n, по што се читаат n цели броеви. Да се најде најголемата разлика помеѓу два броја, од вака внесените броеви.
+#include <stdio.h>
+#include <math.h>
+MAX = 100;
+int main() {
+    int n, najgolemaRazlika = 0;
+    int a[MAX];
+    scanf("%d", &n);
+    for(int x = 0; x<n; x++){
+        scanf("%d", &a[x]);
+        //printf("%d\n",a[x]);
+    }
+
+    for(int x = 0; x<n; x++){
+        for(int y = 0; y<n; y++){
+            //printf("%d\n", abs((a[x] - a[y])));
+            if(x != y) {
+                if(abs((a[x] - a[y])) > najgolemaRazlika){
+                    najgolemaRazlika = abs((a[x] - a[y]));
+                }
+            }
+        }
+    }
+    printf("Najgolema razlika: %d",najgolemaRazlika);
+
+    return 0;
+}

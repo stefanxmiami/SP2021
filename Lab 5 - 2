@@ -1,0 +1,37 @@
+Да се напише програма која ќе прочита два природни броја. 
+Програмата треба да провери дали сите цифри од првиот број се појавуваат во вториот број. Ако овој услов е исполнет, програмата печати DA, во спротивно NE.
+
+#include <stdio.h>
+
+int main() {
+    int m, n, temp1, temp2, numOfDigits = 0;
+    int numOfOccurrences = 0;
+    scanf("%d %d",&m, &n);
+
+    temp1 = m;
+    temp2 = n;
+    while (m){
+        numOfDigits++;
+        while (n){
+            //printf("m : %d == n : %d\n", m%10, n%10);
+            if(m%10 == n%10){
+                numOfOccurrences++;
+                break;
+            }
+            n/=10;
+        }
+        n = temp2;
+        m/=10;
+    }
+
+
+    if(numOfDigits == numOfOccurrences){
+        printf("DA");
+    } else {
+        printf("NE");
+    }
+    //printf("NumOfDigits: %d\n", numOfDigits);
+    //printf("NumOfOccurrences: %d\n", numOfOccurrences);
+
+    return 0;
+}

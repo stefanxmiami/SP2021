@@ -1,0 +1,36 @@
+Еден пајак секогаш ја плете својата мрежа на ист начин. 
+Така, тој плете по сите страни на еден квадрат и по неговата споредна дијагонала. 
+Ако при влез од тастатура се внесе број n кој е поголем или еднаков на 5, испечатете ја мрежата која би ја сплетил пајакот. Пример, кога n=5:
+
+*****
+*  **
+* * *
+**  *
+*****
+
+#include <stdio.h>
+#include <math.h>
+MAX = 100;
+int main() {
+    int n, najgolemaRazlika = 0;
+    int a[MAX];
+    scanf("%d", &n);
+    for(int x = 0; x<n; x++){
+        scanf("%d", &a[x]);
+        //printf("%d\n",a[x]);
+    }
+
+    for(int x = 0; x<n; x++){
+        for(int y = 0; y<n; y++){
+            //printf("%d\n", abs((a[x] - a[y])));
+            if(x != y) {
+                if(abs((a[x] - a[y])) > najgolemaRazlika){
+                    najgolemaRazlika = abs((a[x] - a[y]));
+                }
+            }
+        }
+    }
+    printf("Najgolema razlika: %d",najgolemaRazlika);
+
+    return 0;
+}

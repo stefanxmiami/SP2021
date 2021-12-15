@@ -1,0 +1,46 @@
+Од стандарден влез се чита позитивен непарен број n (n е најмалку 3) кој ги дава димензиите на квадратната матрица од цели броеви, 
+која се чита во продолжение. Да се напише програма која од таа матрица(макс. 100 x 100) ќе креира нова матрица 2 x 2,
+која ќе ги има за елементи збировите на елементите на регионите на првата матрица, соодветно.
+
+#include <stdio.h>
+
+int main() {
+    int n, rOne = 0, rTwo = 0, rThree = 0, rFour = 0;
+    scanf("%d", &n);
+    int matrix[n][n];
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+    //Region 1
+    for (int i = 0; i < n/2; i++) {
+        for (int j = 0; j < n/2; j++) {
+            rOne += matrix[i][j];
+        }
+    }
+
+    //Region 2
+    for (int i = 0; i < n/2; i++) {
+        for (int j = (n/2)+1; j < n; j++) {
+            rTwo += matrix[i][j];
+        }
+    }
+
+    //Region 3
+    for (int i = (n/2)+1; i < n; i++) {
+        for (int j = 0; j < n/2; j++) {
+            rThree += matrix[i][j];
+        }
+    }
+
+    //Region 4
+    for (int i = (n/2)+1; i < n; i++) {
+        for (int j = (n/2)+1; j < n; j++) {
+            rFour += matrix[i][j];
+        }
+    }
+
+    printf("%d %d\n%d %d", rOne, rTwo, rThree, rFour);
+    return 0;
+}
